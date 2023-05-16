@@ -415,9 +415,15 @@ for i in range(1, n):
 table = 'streamflow_data'
 conn.execute("DROP TABLE IF EXISTS {0};".format(table))
 
+# Rename table
+out_data.index.name = "datetime"
+
 # Insert data
 out_data.to_sql(table, con=conn, if_exists='replace', index=True)
 print("Successfully inserted data...")
 
 # Close connection
 conn.close()
+
+# Save the xlsx
+#out_data.to_excel('Brazil_Streamflow_Data.xlsx', index=False)

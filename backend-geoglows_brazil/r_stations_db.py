@@ -27,11 +27,13 @@ conn = db.connect()
 # Read streamflow stations and insert to database
 data = pd.read_excel('Brazil_Stations_Streamflow.xlsx', index_col=0) 
 df = pd.DataFrame(data)
+#conn.execute("DROP TABLE IF EXISTS streamflow_station;")
 df.to_sql('streamflow_station', con=conn, if_exists='replace', index=False)
 
 # Read water level stations and insert to database
 data = pd.read_excel('Brazil_Stations_WaterLevel.xlsx', index_col=0) 
 df = pd.DataFrame(data)
+#conn.execute("DROP TABLE IF EXISTS waterlevel_station;")
 df.to_sql('waterlevel_station', con=conn, if_exists='replace', index=False)
 
 
