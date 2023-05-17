@@ -217,7 +217,7 @@ function onEachFeature(feature, layer) {
                         '"' + feature.properties.elevation + '",' + 
                         '"' + feature.properties.loc1 + '",' +
                     ");' >"+
-                        "<i class='fa fa-download'></i>&nbsp;Visualizar Datos"+
+                        "<i class='fa fa-download'></i>&nbsp;Visualize data"+
                     "</button>"+
                 "</div>"+ 
             "</div>"+

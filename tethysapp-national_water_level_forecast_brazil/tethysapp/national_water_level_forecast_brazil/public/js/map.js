@@ -167,7 +167,7 @@ async function get_data_station(code, comid, name, river, basin, latitude, longi
 function onEachFeature(feature, layer) {
     layer.bindPopup(
         "<div class='popup-container'>"+
-            "<div class='popup-title'><b> DATOS DE LA ESTACION </b></div>"+
+            "<div class='popup-title'><b> STATION INFORMATION </b></div>"+
                "<table style='font-size:12px'>"+
                 "<tbody>"+
                     "<tr>"+
@@ -215,7 +215,7 @@ function onEachFeature(feature, layer) {
                         '"' + feature.properties.elevation + '",' + 
                         '"' + feature.properties.loc1 + '",' + 
                     ");' >"+
-                        "<i class='fa fa-download'></i>&nbsp;Visualizar Datos"+
+                        "<i class='fa fa-download'></i>&nbsp;Visualize data"+
                     "</button>"+
                 "</div>"+ 
             "</div>"+
