@@ -390,13 +390,13 @@ YYYY = str(now.year)
 MM = str(now.month)
 DD = now.day
 
-code = stations.code[0]
-url = 'http://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao={0}&DataInicio=01/01/1900&DataFim={1}/{2}/{3}&tipoDados=3&nivelConsistencia=1'.format(code, DD, MM, YYYY)
-out_data = get_observed_data(url, "h{0}".format(code))
-error_list = []
+#code = stations.code[0]
+#url = 'http://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao={0}&DataInicio=01/01/1900&DataFim={1}/{2}/{3}&tipoDados=3&nivelConsistencia=1'.format(code, DD, MM, YYYY)
+#out_data = get_observed_data(url, "h{0}".format(code))
+#error_list = []
 
 n = len(stations.code)
-for i in range(1, n):
+for i in range(n):
     code = stations.code[i]
     # Progress
     prog = round(100 * i/n, 3)
@@ -404,26 +404,33 @@ for i in range(1, n):
     # Download
     url = 'http://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao={0}&DataInicio=01/01/1900&DataFim={1}/{2}/{3}&tipoDados=3&nivelConsistencia=1'.format(code, DD, MM, YYYY)
     try:
-        temp_data = get_observed_data(url, "h{0}".format(code))
-        out_data = out_data.merge(temp_data, how='outer', left_index=True, right_index=True)
-        print(out_data.shape)
+        #temp_data = get_observed_data(url, "h{0}".format(code))
+        #out_data = out_data.merge(temp_data, how='outer', left_index=True, right_index=True)
+        #print(out_data.shape)
+        temp_data = get_observed_data(code)
+        temp_data.index.name = "datetime"
+        print(temp_data.shape)
+        # Define the table and delete if exist
+        table = 'sf_{0}'.format(code)
+        conn.execute("DROP TABLE IF EXISTS {0};".format(table))
+        temp_data.to_sql(table, con=conn, if_exists='replace', index=True)
     except:
         print("Error downloading data in station {0}".format(code))
         error_list = np.append(error_list, code)
 
 # Define the table and delete if exist
-table = 'streamflow_data'
-conn.execute("DROP TABLE IF EXISTS {0};".format(table))
+#table = 'streamflow_data'
+#conn.execute("DROP TABLE IF EXISTS {0};".format(table))
 
 # Rename table
-out_data.index.name = "datetime"
+#out_data.index.name = "datetime"
 
 # Insert data
-out_data.to_sql(table, con=conn, if_exists='replace', index=True)
-print("Successfully inserted data...")
+#out_data.to_sql(table, con=conn, if_exists='replace', index=True)
+#print("Successfully inserted data...")
 
 # Close connection
 conn.close()
 
 # Save the xlsx
-#out_data.to_excel('Brazil_Streamflow_Data.xlsx', index=False)
+#out_data.to_excel('Brazil_Streamflow_Data.xlsx', index=False) 
