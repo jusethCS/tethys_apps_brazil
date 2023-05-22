@@ -245,7 +245,7 @@ conn = db.connect()
 # Getting stations
 stations = pd.read_sql("select * from streamflow_station;", conn)
 
-# Number of stations
+# Number of stations 
 n = len(stations)
 
 # For loop
@@ -255,7 +255,7 @@ for i in range(n):
     station_code = stations.code[i]
     station_comid = stations.comid[i]
     # Query to database
-    observed_data = get_format_data("select datetime, h{0} from streamflow_data order by datetime;".format(station_code), conn)
+    observed_data = get_format_data("select distinct * from sf_{0} order by datetime;".format(station_code), conn)
     simulated_data = get_format_data("select * from r_{0};".format(station_comid), conn)
     ensemble_forecast = get_format_data("select * from f_{0};".format(station_comid), conn)
     # Corect the historical simulation

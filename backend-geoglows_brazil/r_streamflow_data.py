@@ -390,10 +390,7 @@ YYYY = str(now.year)
 MM = str(now.month)
 DD = now.day
 
-#code = stations.code[0]
-#url = 'http://telemetriaws1.ana.gov.br/ServiceANA.asmx/HidroSerieHistorica?codEstacao={0}&DataInicio=01/01/1900&DataFim={1}/{2}/{3}&tipoDados=3&nivelConsistencia=1'.format(code, DD, MM, YYYY)
-#out_data = get_observed_data(url, "h{0}".format(code))
-#error_list = []
+error_list = []
 
 n = len(stations.code)
 for i in range(n):
@@ -407,7 +404,7 @@ for i in range(n):
         #temp_data = get_observed_data(url, "h{0}".format(code))
         #out_data = out_data.merge(temp_data, how='outer', left_index=True, right_index=True)
         #print(out_data.shape)
-        temp_data = get_observed_data(code)
+        temp_data = get_observed_data(url, code)
         temp_data.index.name = "datetime"
         print(temp_data.shape)
         # Define the table and delete if exist
@@ -418,19 +415,7 @@ for i in range(n):
         print("Error downloading data in station {0}".format(code))
         error_list = np.append(error_list, code)
 
-# Define the table and delete if exist
-#table = 'streamflow_data'
-#conn.execute("DROP TABLE IF EXISTS {0};".format(table))
-
-# Rename table
-#out_data.index.name = "datetime"
-
-# Insert data
-#out_data.to_sql(table, con=conn, if_exists='replace', index=True)
-#print("Successfully inserted data...")
 
 # Close connection
 conn.close()
 
-# Save the xlsx
-#out_data.to_excel('Brazil_Streamflow_Data.xlsx', index=False) 
