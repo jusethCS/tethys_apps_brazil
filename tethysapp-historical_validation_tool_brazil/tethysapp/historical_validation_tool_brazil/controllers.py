@@ -490,8 +490,9 @@ def get_data(request):
     db = create_engine(tokencon)
     conn = db.connect()
 
-    # Data series
-    observed_data = get_format_data("select datetime, h{0} from streamflow_data where datetime > '1975-01-01' order by datetime;".format(station_code), conn)
+    # Data series 
+    #observed_data = get_format_data("select datetime, h{0} from streamflow_data where datetime > '1975-01-01' order by datetime;".format(station_code), conn)
+    observed_data = get_format_data("select distinct * from sf_{0} order by datetime;".format(station_code), conn)
     simulated_data = get_format_data("select * from r_{0};".format(station_comid), conn)
     corrected_data = get_bias_corrected_data(simulated_data, observed_data)
 
@@ -645,7 +646,8 @@ def get_raw_forecast_date(request):
     conn = db.connect()
 
     # Data series
-    observed_data = get_format_data("select datetime, h{0} from streamflow_data order by datetime;".format(station_code), conn)
+    #observed_data = get_format_data("select datetime, h{0} from streamflow_data order by datetime;".format(station_code), conn)
+    observed_data = get_format_data("select distinct * from sf_{0} order by datetime;".format(station_code), conn)
     simulated_data = get_format_data("select * from r_{0};".format(station_comid), conn)
     corrected_data = get_bias_corrected_data(simulated_data, observed_data)
     
