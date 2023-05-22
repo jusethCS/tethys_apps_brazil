@@ -50,39 +50,37 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+
           <p>
-            La aplicación <strong></strong>National Water Level Forecast </strong> personalizada para Ecuador es 
-            una aplicación ligera que muestra pronóstico de nivel.
+            The National Water Level Forecast web application customized for Ecuador 
+            is a light-weight application for evaluate the bias-corrected simulated 
+            values for the GEOGloWS ECMWF Streamflow Prediction Tool in Brazil.
           </p>
-          <p> 
-            Esta aplicación nos permite usar la funcionalidad de hydrostats para evaluar la precisión de la simulación histórica 
-            con corrección de sesgo del modelo hidrológico global GEOGloWS ECMWF en comparación con el nivel observado en las 
-            estaciones de medición en Ecuador.</p>
-          <p> Esta corrección de sesgo se extiende a corto plazo a la herramienta de predicción de caudal GEOGloWS ECMWF para pronóstico. Los usuarios pueden hacer clic en cualquier estación del mapa para obtener datos observados y simulados.</p>
-          <p style="color:#e61e29;"> <strong>AVISO IMPORTANTE: </strong></p>
-             <p style="color:#e61e29;">
-              El usuario debe considerar que estas simulaciones y pronósticos son una referencia
-              que utiliza la herramienta de predicción del GEOGloWS ECMWF y datos observados de estaciones hidrológicas
-              del INAMHI para estimar el rango más probable caudales por encima o debajo del promedio
-              histórico simulado.</p>
-           </p>
-           <ol style="color:#e61e29;">
-             <li> El usuario debe tener en cuenta la probabilidad de que una predicción no sea siempre  correcta.</li>
-             <li> El usuario de esta herramienta acepta de antemano la forma y uso de la información.</li>
-           </ol style="color:#e61e29;">
-          <p><strong>Recursos adicionales:</strong></p>
           <p>
-            <a href="{% static 'national_water_level_forecast_brazil/pdf/manual_usuario.pdf' %}" download>Manual de Usuario</a>
-            &nbsp &nbsp
-            <a href="{% static 'national_water_level_forecast_brazil/pdf/manual_tecnico.pdf' %}" download>Manual Técnico</a>
+            This app allows us to use the hydrostats python packages in order to evaluate 
+            how accurate is the bias corrected historical simulation from the GEOGloWS ECMWF 
+            Streamflow Prediction Tool in Gauging Stations in Brazil.
           </p>
+          <p>
+            Additionally, this bias-correction is extended to the GEOGloWS ECMWF Streamflow 
+            Prediction Tool short term forecast
+          </p>
+          <p>
+            Users can click on any station in the map to retrieve observed and simulated data.
+          </p>
+          <p style="color:#e61e29;"> <strong>DISCLAIMER:</strong></p>
+          <p style="color:#e61e29;">
+              The user should consider these simulations and forecasts are a reference that uses the GEOGloWS ECMWF prediction tool and observed data to estimate the most probable water level range above or below the simulated historical average.</p>
+          </p>
+          <ol style="color:#e61e29;">
+             <li> The user must consider the probability that a prediction is not always correct.</li>
+             <li> The user accepts in advance the term and use conditions of the information.</li>
+          </ol style="color:#e61e29;"> 
         </div>
         <div class="modal-footer">
           <div class="FootNote">
             <p style ><sup>
-                Fuentes: La red de drenaje ha sido obtenida del modelo GEOGloWS ECMWF;
-                Demarcaciones hidrográficas: MAATE, 2014;
-                Estaciones hidrológicas: INAMHI, 2022</sup> 
+                Sources: Drainage network of the GEOGloWS ECMWF model;</sup> 
             </p>
           </div>
         </div>

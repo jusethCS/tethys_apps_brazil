@@ -50,33 +50,38 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p> <strong>Historical Validation Tool personalizada para Ecuador</strong> es una aplicación para la evaluación y correción de sesgo de la simulación histórica del modelo hidrológico global GEOGloWS ECMWF en Ecuador.</p>
-          <p> Esta aplicación nos permite usar la funcionalidad de hydrostats para evaluar la precisión de la simulación histórica con y sin corrección de sesgo en la Herramienta de predicción de caudal GEOGloWS ECMWF en comparación con el caudal observado en las estaciones de medición en Ecuador.</p>
-          <p> Esta corrección de sesgo se extiende a corto plazo a la herramienta de predicción de caudal GEOGloWS ECMWF para pronóstico. Los usuarios pueden hacer clic en cualquier estación del mapa para obtener datos observados y simulados.</p>
-          <p style="color:#e61e29;"> <strong>AVISO IMPORTANTE: </strong></p>
-             <p style="color:#e61e29;">
-              El usuario debe considerar que estas simulaciones y pronósticos son una referencia
-              que utiliza la herramienta de predicción del GEOGloWS ECMWF y datos observados de estaciones hidrológicas
-              del INAMHI para estimar el rango más probable caudales por encima o debajo del promedio
-              histórico simulado.</p>
-           </p>
-           <ol style="color:#e61e29;">
-             <li> El usuario debe tener en cuenta la probabilidad de que una predicción no sea siempre  correcta.</li>
-             <li> El usuario de esta herramienta acepta de antemano la forma y uso de la información.</li>
-           </ol style="color:#e61e29;">
-          <p><strong>Recursos adicionales:</strong></p>
           <p>
-            <a href="{% static 'historical_validation_tool_brazil/pdf/manual_usuario.pdf' %}" download>Manual de Usuario</a>
-            &nbsp &nbsp
-            <a href="{% static 'historical_validation_tool_brazil/pdf/manual_tecnico.pdf' %}" download>Manual Técnico</a>
+            Historical Validation Tool web application customized for Brazil 
+            is a light-weight application for evaluate the bias-corrected simulated 
+            values for the GEOGloWS ECMWF Streamflow Prediction Tool in Brazil.
           </p>
+          <p>
+            The app uses the hydrostats python packages to assess the accuracy of the historical simulation with  
+            bias correction in the GEOGloWS ECMWF streamflow prediction tool compared to the observed water levels.
+          </p>
+          <p>
+            Additionally, this bias-correction is extended to the GEOGloWS ECMWF Streamflow 
+            Prediction Tool short term forecast
+          </p>
+          <p>
+            Users can click on any station in the map to retrieve observed and simulated data.
+          </p>
+          <p style="color:#e61e29;"><strong>DISCLAIMER:</strong></p>
+          <p style="color:#e61e29;">
+          The user should consider these simulations and forecasts are a reference that use GEOGloWS ECMWF prediction tool 
+          and observed data to estimate the most likely range of streamflows above or below the simulated historical average.
+          </p>
+          <ol style="color:#e61e29;">
+            <li>The user should consider the probability that a prediction may not always be correct.</li>
+            <li>The user accepts in advance the term and use conditions of the information.</li>
+          </ol>
+          
+           
         </div>
         <div class="modal-footer">
           <div class="FootNote">
             <p style ><sup>
-                Fuentes: La red de drenaje ha sido obtenida del modelo GEOGloWS ECMWF;
-                Demarcaciones hidrográficas: MAATE, 2014;
-                Estaciones hidrológicas: INAMHI, 2022</sup> 
+              Sources: Drainage network of the GEOGloWS ECMWF model;</sup> 
             </p>
           </div>
         </div>
