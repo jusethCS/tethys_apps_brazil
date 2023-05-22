@@ -252,7 +252,7 @@ def get_daily_average_plot(merged_sim, merged_cor, code, name):
     layout = go.Layout(
         title='Daily Average Water Level <br> {0} - {1}'.format(code.upper(), name),
         xaxis=dict(title='Days', ), 
-        yaxis=dict(title='Water Level (m)', autorange=True),
+        yaxis=dict(title='Water Level (cm)', autorange=True),
         showlegend=True)
     # Generate the output
     chart_obj = go.Figure(data=[daily_avg_obs_Q, daily_avg_corr_sim_Q], layout=layout)
@@ -272,7 +272,7 @@ def get_monthly_average_plot(merged_sim, merged_cor, code, name):
     layout = go.Layout(
         title='Monthly Average Water Level <br> {0} - {1}'.format(code.upper(), name),
         xaxis=dict(title='Months', ), 
-        yaxis=dict(title='Water Level (m)', autorange=True),
+        yaxis=dict(title='Water Level (cm)', autorange=True),
         showlegend=True)
     # Generate the output
     chart_obj = go.Figure(data=[daily_avg_obs_Q, daily_avg_corr_sim_Q], layout=layout)
@@ -302,13 +302,13 @@ def get_scatter_plot(merged_sim, merged_cor, code, name, log):
     # Plot Layout
     if log == True:
         layout = go.Layout(title = "Scatter Plot (Log Scale) <br> {0} - {1}".format(code.upper(), name),
-                       xaxis = dict(title = 'Simulated Water Level (m)', type = 'log', ), 
-                       yaxis = dict(title = 'Observed Water Level (m)', type = 'log', autorange = True), 
+                       xaxis = dict(title = 'Simulated Water Level (cm)', type = 'log', ), 
+                       yaxis = dict(title = 'Observed Water Level (cm)', type = 'log', autorange = True), 
                        showlegend=True)
     else:
         layout = go.Layout(title = "Scatter Plot <br> {0} - {1}".format(code.upper(), name),
-                       xaxis = dict(title = 'Simulated Water Level (m)',  ), 
-                       yaxis = dict(title = 'Observed Water Level (m)', autorange = True), 
+                       xaxis = dict(title = 'Simulated Water Level (cm)',  ), 
+                       yaxis = dict(title = 'Observed Water Level (cm)', autorange = True), 
                        showlegend=True)
     # Plotting data
     chart_obj = go.Figure(data=[scatter_data2, line_45], layout=layout)
@@ -349,7 +349,7 @@ def get_forecast_plot(comid, site, stats, rperiods, records):
     hydroviewer_figure = geoglows.plots.forecast_stats(stats=corrected_stats_df,)
     layout = go.Layout(
         title = _build_title('Forecasted Water Level', {'Site': site, 'Reach ID': comid, 'bias_corrected': True}),
-        yaxis = {'title': 'Water Level (m)', 'range': [0, 'auto']},
+        yaxis = {'title': 'Water Level (cm)', 'range': [0, 'auto']},
     )
     hydroviewer_figure.update_layout(layout)
     x_vals = (corrected_stats_df.index[0], corrected_stats_df.index[len(corrected_stats_df.index) - 1], corrected_stats_df.index[len(corrected_stats_df.index) - 1], corrected_stats_df.index[0])
@@ -422,7 +422,7 @@ def plot_historical_waterlevel(observed_df, corrected_df, station_code, station_
     corrected_WL = go.Scatter(x=corrected_df.index, y=corrected_df.iloc[:, 0].values, name='Corrected Simulated', line=dict(color="#00CC96"))
     layout = go.Layout(
             title='Observed & Simulated Water Level <br> {0} - {1}'.format(station_code, station_name),
-            xaxis=dict(title='Dates', ), yaxis=dict(title='Water Level (m)', autorange=True),
+            xaxis=dict(title='Dates', ), yaxis=dict(title='Water Level (cm)', autorange=True),
             showlegend=True)
     return(go.Figure(data=[observed_WL, corrected_WL], layout=layout))
 
