@@ -69,10 +69,10 @@
             <div class="container-fluid">
                 {% gizmo corrected_data_plot %}
                 <button type="button" class="btn btn-sm btn-primary" onclick="descargarArchivo('get-simulated-data-xlsx')">
-                    <i class="fa-solid fa-download"></i> Descargar Simulación histórica
+                    <i class="fa-solid fa-download"></i> Download historical simulation
                 </button>
                 <button type="button" class="btn btn-sm btn-primary" onclick="descargarArchivo('get-corrected-data-xlsx')">
-                    <i class="fa-solid fa-download"></i> Descargar Simulación histórica corregida
+                    <i class="fa-solid fa-download"></i> Download corrected historical simulation
                 </button>
             </div>
         </div>
@@ -169,7 +169,7 @@
                     </div>
                     <br>
                     <button type="button" class="btn btn-sm btn-primary" onclick="descargarArchivo('get-forecast-xlsx')">
-                        <i class="fa-solid fa-download"></i> Descargar Pronóstico
+                        <i class="fa-solid fa-download"></i> Download forecast
                     </button>
                 </div>
                 <br>
@@ -192,7 +192,7 @@
                 </div>
                 <br>
                 <button type="button" class="btn btn-sm btn-primary" onclick="descargarArchivo('get-corrected-forecast-xlsx')">
-                    <i class="fa-solid fa-download"></i> Descargar Pronóstico corregido
+                    <i class="fa-solid fa-download"></i> Download corrected forecast
                 </button>
             </div>
             <br>
@@ -281,7 +281,7 @@
 
         function descargarArchivo(api_name){
             forecast_date = $("#datepicker_cor").val()
-            url = `${server}/apps/historical-validation-tool-ecuador/${api_name}/?fecha=${forecast_date}&codigo=${active_code}&comid=${active_comid}`
+            url = `${server}/apps/historical-validation-tool-brazil/${api_name}/?fecha=${forecast_date}&codigo=${active_code}&comid=${active_comid}`
             window.location.href = url;
         }
     </script>

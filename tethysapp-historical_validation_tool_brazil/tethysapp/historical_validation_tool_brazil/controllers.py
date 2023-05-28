@@ -716,7 +716,7 @@ def get_raw_forecast_date(request):
 
 
 # Retrieve xlsx data
-@controller(name='get_simulated_data_xlsx',url='historical-validation-tool-ecuador/get-simulated-data-xlsx')
+@controller(name='get_simulated_data_xlsx',url='historical-validation-tool-brazil/get-simulated-data-xlsx')
 def get_simulated_data_xlsx(request):
     # Retrieving GET arguments
     station_code = request.GET['codigo'] #"h0267"
@@ -742,7 +742,7 @@ def get_simulated_data_xlsx(request):
 
 
 # Retrieve xlsx data
-@controller(name='get_corrected_data_xlsx',url='historical-validation-tool-ecuador/get-corrected-data-xlsx')
+@controller(name='get_corrected_data_xlsx',url='historical-validation-tool-brazil/get-corrected-data-xlsx')
 def get_corrected_data_xlsx(request):
     # Retrieving GET arguments
     station_code = request.GET['codigo'] #"h0267"
@@ -771,7 +771,7 @@ def get_corrected_data_xlsx(request):
 
 
 # Retrieve xlsx data
-@controller(name='get_forecast_xlsx',url='historical-validation-tool-ecuador/get-forecast-xlsx')
+@controller(name='get_forecast_xlsx',url='historical-validation-tool-brazil/get-forecast-xlsx')
 def get_forecast_xlsx(request):
     # Retrieving GET arguments
     station_code = request.GET['codigo']
@@ -796,7 +796,7 @@ def get_forecast_xlsx(request):
     return response
 
 
-@controller(name='get_corrected_forecast_xlsx',url='historical-validation-tool-ecuador/get-corrected-forecast-xlsx')
+@controller(name='get_corrected_forecast_xlsx',url='historical-validation-tool-brazil/get-corrected-forecast-xlsx')
 def get_corrected_forecast_xlsx(request):
     # Retrieving GET arguments
     station_code = request.GET['codigo']
