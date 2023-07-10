@@ -254,23 +254,21 @@ for i in range(n):
     # State variables  
     station_code = stations.code[i]
     station_comid = stations.comid[i]
-    try:
-        # Query to database
-        observed_data = get_format_data("select distinct * from sf_{0} order by datetime;".format(station_code), conn)
-        simulated_data = get_format_data("select * from r_{0};".format(station_comid), conn)
-        ensemble_forecast = get_format_data("select * from f_{0};".format(station_comid), conn)
-        # Corect the historical simulation
-        corrected_data = get_bias_corrected_data(simulated_data, observed_data)
-        # Return period
-        return_periods = get_return_periods(station_comid, corrected_data)
-        # Corrected Forecast
-        ensemble_forecast = get_corrected_forecast(simulated_data, ensemble_forecast, observed_data)
-        # Forecast stats
-        ensemble_stats = get_ensemble_stats(ensemble_forecast)
-        # Warning if excced a given return period in 10% of emsemble
-        stations.loc[i, ['alert']] = get_excced_rp(ensemble_stats, ensemble_forecast, return_periods)
-    except:
-        print("Error...")
+    # Query to database
+    observed_data = get_format_data("select distinct * from sf_{0} order by datetime;".format(station_code), conn)
+    simulated_data = get_format_data("select * from r_{0} where datetime < '2022-06-01 00:00:00';".format(station_comid), conn)
+    ensemble_forecast = get_format_data("select * from f_{0};".format(station_comid), conn)
+    # Corect the historical simulation
+    corrected_data = get_bias_corrected_data(simulated_data, observed_data)
+    # Return period
+    return_periods = get_return_periods(station_comid, corrected_data)
+    # Corrected Forecast
+    ensemble_forecast = get_corrected_forecast(simulated_data, ensemble_forecast, observed_data)
+    # Forecast stats
+    ensemble_stats = get_ensemble_stats(ensemble_forecast)
+    # Warning if excced a given return period in 10% of emsemble
+    stations.loc[i, ['alert']] = get_excced_rp(ensemble_stats, ensemble_forecast, return_periods)
+
 
 
 # Insert to database

@@ -257,7 +257,7 @@ for i in range(n):
     try:
         # Query to database
         observed_data = get_format_data("select distinct * from wl_{0} order by datetime;".format(station_code), conn)
-        simulated_data = get_format_data("select * from r_{0};".format(station_comid), conn)
+        simulated_data = get_format_data("select * from r_{0} where datetime < '2022-06-01 00:00:00';".format(station_comid), conn)
         ensemble_forecast = get_format_data("select * from f_{0};".format(station_comid), conn)
         # Corect the historical simulation
         corrected_data = get_bias_corrected_data(simulated_data, observed_data)
